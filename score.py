@@ -9,7 +9,7 @@ while True :
 	elif score >= 70 and score < 85:
 		print "score is good"
 		continue
-	elif score >= 85 and score < 100: 
+	elif score >= 85 and score <= 100: 
 		print "score is excellent"
 		continue
 	elif score < 60:
