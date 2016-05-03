@@ -7,7 +7,7 @@ try:
 	textfile1=sys.argv[1]
 	textfile2=sys.argv[2]
 except Exception,e:
-	print "Error:"+str(e)
+#	print "Error:"+str(e)
 	print "Usage: diff_simple1.py filename1 filename2"
 	exit()
 
