@@ -1,42 +1,37 @@
 #!/usr/bin/python -w
 
-#coding:utf-8
-
-import sys
-
 stock_price = {'google':716, 'apple':105, 'facebook':109, 'microsoft':50, 'baidu':90, '360':75, 'alibaba':88}
 
 while True:
 	try:
-		money=input('Please input your money: ')
+		money = input('Please input your money: ')
 		break
 	except:
-		print "your input is not correct, please input a number"
+		print "You input error,Please input again"
 stock_list=[]
-	
-while True:
-	print "\nCan you buy the stock at present:"
-	for index,price in stock_price.items():
-		print '%s......%s' % (index,price)
 
-	if money < min(stock_price.values()):
-		print "\nsorry, you have no enough money to buy any stock\n"
-		if stock_list:
-			print "\n you have this stock:\n %s" % str(stock_list)
-		exit()
-	
-	_choose = raw_input('You have %s$, Please choose these stock: ' % money)
-	
-	_choose = _choose.strip()
-	
-	if _choose not in stock_price:
-		print "\nYou choose stock inexistence, Please choose stock again\n"
+while True:
+	print "\nYou can buy these stock: \n"
+	for keys,values in stock_price.items():
+		print keys,values
 		continue
-		
-	price = stock_price[_choose]
-	if money >= price:
-		stock_list.append(_choose)
+	if money <= min(stock_price.values()):
+		print "\nYou money is %s, You have no enough money buy any stock\n" % money
+		if stock_list:
+			print "You buyed stock is %s" % str(stock_list)
+		exit()
+	choose = raw_input('\nYou have %s$,You can buy these stock: \n' % money)
+	choose = choose.strip()
+	if choose in ('q','quit'):
+		print "Thank you for your choose to purchase shares in the stock market"
+                exit()
+	
+	if choose not in stock_price:
+		print "The stock is not stock market, please input again"
+		continue
+	
+	price = stock_price[choose]
+	if money > price:
+		stock_list.append(choose)
 		money -= price
-		print "\n You balance is %s \n" % money
-	else:
-		print "You can't buy any stock"
+		print "You surplus is %s" % money
