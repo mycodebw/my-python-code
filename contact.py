@@ -15,7 +15,7 @@ def showall():
 			print("%s : %s" %(key, info[key]))
 	f.close()
 	
-def search():
+def search(name):
 	f=open('/root/contact.data','rb')
 	info = pickle.load(f)
 	f.close()
@@ -33,9 +33,9 @@ def add():
 		print ("Contact already exists,do not need to add")
 	else:
 		number = input("Please input your cellphone number: ")
-		#info['total'] +=1
+		info['total'] +=1
 		info.setdefault(name, number)
-		f=open('/root/contact.data','wb')
+		f = open('/root/contact.data','wb')
 		pickle.dump(info, f)
 		f.close()
 		print ("Add is OK")
@@ -54,15 +54,17 @@ def change():
                 pickle.dump(info, f)
                 f.close()
 		print ("Modify is OK")
+	else:
+		print ("Contact does not exist!")
 
-def delete():
+def delete(name):
 	f=open('/root/contact.data','rb')
         info = pickle.load(f)
         f.close()
 	if name in info:
 		info.pop(name)
 		info['total'] -= 1
-		f=open('/root/contact.data','rb')
+		f=open('/root/contact.data','wb')
 		pickle.dump(info, f)
 		f.close()
 		print ("Delete is OK")
