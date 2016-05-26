@@ -17,7 +17,7 @@ class Nana(Lion):
 		self.face_score = face_score
 		self.voice = voice
 
-class Sindy(Lion):
+class Lily(Lion):
 	
 	def __init__(self, face_score, voice):
 		self.face_score = face_score
@@ -40,10 +40,10 @@ def fight():
 
 def choose_wife():
 	nana = Nana(77, 87)
-	sindy = Sindy(75, 89)
+	lily = Lily(75, 89)
 
 	nana_ret = nana.face_score + nana.voice
-	sindy_ret = sindy.face_score + sindy.voice
+	lily_ret = lily.face_score + lily.voice
 
 if __name__ == '__main__':
 	fight()
